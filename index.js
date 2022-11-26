@@ -5,9 +5,7 @@ const images = require('images');
 const blackList = ['node_modules'];
 const imgSuffixs = ['png', 'jpg', 'jpeg', 'webp', 'gif'];
 
-const quality = process.argv[2] ? process.argv[2] : 30;
-
-console.log(quality);
+const quality = process.argv[2] ? +process.argv[2] : 30;
 
 function getAllImgs(pathUrl) {
   const files = fs.readdirSync(pathUrl);

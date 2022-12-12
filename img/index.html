@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+  position: relative;
+}
+.container img {
+  position: absolute;
+  width: 100%;
+}
+.hidden {
+  opacity: 0;
+}
+.pre {
+  opacity: 1;
+  transition: filter 2s ease-in-out;
+}
+.next {
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+}
+.next.loaded {
+  opacity: 1;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="pre" src="123.svg" alt="">
+    <img class="next" real-src="123.png" alt="">
+  </div>
+
+  <script>
+    setTimeout(() => {
+  const pre = document.querySelector('.pre')
+  const next = document.querySelector('.next')
+  next.src = '123.png'
+  next.classList.add('loaded')
+  next.addEventListener('transitionend', function animationend() {
+    pre.classList.add('hidden')
+    next.removeEventListener('transitionend', animationend)
+  })
+}, 2000)
+
+  </script>
+</body>
+</html>
